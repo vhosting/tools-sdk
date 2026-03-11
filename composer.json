@@ -1,0 +1,42 @@
+{
+    "name": "vhosting/tools-sdk",
+    "description": "Tools API SDK",
+    "version": "1.0",
+    "homepage": "https://github.com/vhosting/tools-sdk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luca Patera",
+            "email": "lucapatera@outlook.it"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.4",
+        "saloonphp/laravel-plugin": "^3.9",
+        "saloonphp/pagination-plugin": "^2.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "VHosting\\ToolsSdk\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "VHosting\\ToolsSdk\\ToolsSdkServiceProvider"
+            ],
+            "aliases": {
+                "ToolsSdk": "VHosting\\ToolsSdk\\Facades\\ToolsSdk"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
