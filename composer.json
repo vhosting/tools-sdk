@@ -1,7 +1,6 @@
 {
     "name": "vhosting/tools-sdk",
     "description": "Tools API SDK",
-    "version": "1.0",
     "homepage": "https://github.com/vhosting/tools-sdk",
     "type": "library",
     "license": "MIT",
