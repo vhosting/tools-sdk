@@ -1,9 +1,8 @@
 <?php
 
-namespace VHosting\ToolsSdk\Requests;
+namespace VHosting\ToolsSdk\Requests\Workflow;
 
 use Saloon\Enums\Method;
-use Saloon\Http\Faking\MockResponse;
 use Saloon\Http\Request;
 
 class RetryWorkflow extends Request

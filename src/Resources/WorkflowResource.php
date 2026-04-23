@@ -4,10 +4,10 @@ namespace VHosting\ToolsSdk\Resources;
 
 use Saloon\Http\BaseResource;
 use Saloon\PaginationPlugin\Paginator;
-use VHosting\ToolsSdk\Requests\DispatchWorkflow;
-use VHosting\ToolsSdk\Requests\GetWorkflow;
-use VHosting\ToolsSdk\Requests\GetWorkflows;
-use VHosting\ToolsSdk\Requests\RetryWorkflow;
+use VHosting\ToolsSdk\Requests\Workflow\DispatchWorkflow;
+use VHosting\ToolsSdk\Requests\Workflow\GetWorkflow;
+use VHosting\ToolsSdk\Requests\Workflow\GetWorkflows;
+use VHosting\ToolsSdk\Requests\Workflow\RetryWorkflow;
 use VHosting\ToolsSdk\Types\Workflow;
 
 class WorkflowResource extends BaseResource

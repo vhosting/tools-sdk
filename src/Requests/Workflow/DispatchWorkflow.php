@@ -1,10 +1,9 @@
 <?php
 
-namespace VHosting\ToolsSdk\Requests;
+namespace VHosting\ToolsSdk\Requests\Workflow;
 
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
-use Saloon\Http\Faking\MockResponse;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;

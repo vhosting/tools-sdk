@@ -4,10 +4,10 @@ namespace VHosting\ToolsSdk;
 
 use Illuminate\Support\ServiceProvider;
 use Saloon\Http\Faking\MockClient;
-use VHosting\ToolsSdk\Requests\DispatchWorkflow;
-use VHosting\ToolsSdk\Requests\GetWorkflow;
-use VHosting\ToolsSdk\Requests\GetWorkflows;
-use VHosting\ToolsSdk\Requests\RetryWorkflow;
+use VHosting\ToolsSdk\Requests\Workflow\DispatchWorkflow;
+use VHosting\ToolsSdk\Requests\Workflow\GetWorkflow;
+use VHosting\ToolsSdk\Requests\Workflow\GetWorkflows;
+use VHosting\ToolsSdk\Requests\Workflow\RetryWorkflow;
 
 class ToolsSdkServiceProvider extends ServiceProvider
 {
