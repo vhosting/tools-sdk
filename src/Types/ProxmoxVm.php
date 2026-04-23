@@ -14,7 +14,6 @@ class ProxmoxVm
         public string $product_status,
         public ?string $created_at,
         public ?string $updated_at,
-        public ProxmoxPlan $plan,
     )
     {
     }

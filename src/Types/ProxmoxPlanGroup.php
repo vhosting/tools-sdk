@@ -2,18 +2,14 @@
 
 namespace VHosting\ToolsSdk\Types;
 
-class ProxmoxPlan
+class ProxmoxPlanGroup
 {
     public function __construct(
         public int $id,
-        public int $plan_group_id,
         public string $name,
-        public string $type,
-        public array $configuration,
-        public array $firewall_options,
+        public string $hostname,
         public ?string $created_at,
         public ?string $updated_at,
-        public ProxmoxPlanGroup $plan_group,
     )
     {
     }

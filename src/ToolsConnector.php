@@ -10,7 +10,7 @@ use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\PaginationPlugin\Paginator;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
-use VHosting\ToolsSdk\Resources\ProxmoxVmResource;
+use VHosting\ToolsSdk\Resources\ProxmoxResource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
 
 class ToolsConnector extends Connector implements HasPagination
@@ -52,8 +52,8 @@ class ToolsConnector extends Connector implements HasPagination
         return new WorkflowResource($this);
     }
     
-    public function proxmoxVm(): ProxmoxVmResource
+    public function proxmox(): ProxmoxResource
     {
-        return new ProxmoxVmResource($this);
+        return new ProxmoxResource($this);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace VHosting\ToolsSdk\Requests\ProxmoxVm;
+namespace VHosting\ToolsSdk\Requests\Proxmox;
 
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -35,16 +35,6 @@ class GetVm extends Request
             product_status: $data->string('product_status'),
             created_at: $data->string('created_at'),
             updated_at: $data->string('updated_at'),
-            plan: new ProxmoxPlan(
-                id: $data->integer('plan.id'),
-                plan_group_id: $data->integer('plan.plan_group_id'),
-                name: $data->string('plan.name'),
-                type: $data->string('plan.type'),
-                configuration: $data->array('plan.configuration'),
-                firewall_options: $data->array('plan.firewall_options'),
-                created_at: $data->string('plan.created_at'),
-                updated_at: $data->string('plan.updated_at'),
-            )
         );
     }
 }
