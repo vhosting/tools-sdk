@@ -15,9 +15,12 @@ class WorkflowResource extends BaseResource
     /**
      * @return Paginator<Workflow>
      */
-    public function all(): Paginator
+    public function all(?int $vmId = null): Paginator
     {
-        return $this->connector->paginate(new GetWorkflows());
+        $request = new GetWorkflows();
+        $request->query()->add('vm_id', $vmId);
+        
+        return $this->connector->paginate($request);
     }
     
     public function get(int $id): Workflow
