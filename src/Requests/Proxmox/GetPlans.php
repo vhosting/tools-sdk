@@ -26,6 +26,7 @@ class GetPlans extends Request
                 id: $data->integer('id'),
                 plan_group_id: $data->integer('plan_group_id'),
                 name: $data->string('name'),
+                description: $data->string('description'),
                 type: $data->string('type'),
                 configuration: $data->array('configuration'),
                 firewall_options: $data->array('firewall_options'),

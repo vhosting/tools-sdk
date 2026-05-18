@@ -8,6 +8,7 @@ class ProxmoxPlan
         public int $id,
         public int $plan_group_id,
         public string $name,
+        public ?string $description,
         public string $type,
         public array $configuration,
         public array $firewall_options,
