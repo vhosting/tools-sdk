@@ -9,6 +9,8 @@ use Saloon\PaginationPlugin\PagedPaginator;
 
 class LaravelResourcePaginator extends PagedPaginator
 {
+    protected ?int $perPageLimit = 25;
+    
     /**
      * @inheritDoc
      */
