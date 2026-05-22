@@ -18,6 +18,8 @@ class ToolsConnector extends Connector implements HasPagination
     use AcceptsJson;
     use AlwaysThrowOnErrors;
     
+    protected static ?string $locale = null;
+    
     public function __construct(
         protected readonly string $apiKey,
         protected readonly string $baseUrl = 'https://tools.vhosting-it.com/',
@@ -34,11 +36,17 @@ class ToolsConnector extends Connector implements HasPagination
         return new TokenAuthenticator($this->apiKey);
     }
     
+    public static function setLocale(string $locale): void
+    {
+        self::$locale = $locale;
+    }
+    
     protected function defaultHeaders(): array
     {
         return [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
+            'Accept-Language' => self::$locale ?? 'en',
         ];
     }
     
