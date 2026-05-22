@@ -10,6 +10,7 @@ class Workflow
         public int $id,
         public string $type,
         public string $description,
+        public string $short,
         public string $status,
         public array $payload,
         public ?string $created_at,

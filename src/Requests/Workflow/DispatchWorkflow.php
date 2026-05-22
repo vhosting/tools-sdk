@@ -37,6 +37,7 @@ class DispatchWorkflow extends Request implements HasBody
             id: $data->integer('id'),
             type: $data->string('type'),
             description: $data->string('description'),
+            short: $data->string('short'),
             status: $data->string('status'),
             payload: $data->array('payload'),
             created_at: $data->string('created_at'),
