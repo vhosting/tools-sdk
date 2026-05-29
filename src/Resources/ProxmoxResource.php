@@ -5,6 +5,7 @@ namespace VHosting\ToolsSdk\Resources;
 use Saloon\Http\BaseResource;
 use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Types\ProxmoxVm;
 
@@ -23,5 +24,10 @@ class ProxmoxResource extends BaseResource
     public function getVmIps(int $id): array
     {
         return $this->connector->send(new GetVmIps($id))->dto();
+    }
+    
+    public function getVmBackups(int $id): array
+    {
+        return $this->connector->send(new GetVmBackups($id))->dto();
     }
 }
