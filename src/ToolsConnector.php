@@ -46,7 +46,7 @@ class ToolsConnector extends Connector implements HasPagination
         return [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Accept-Language' => self::$locale ?? 'en',
+            'X-Locale' => self::$locale ?? 'en',
         ];
     }
     
