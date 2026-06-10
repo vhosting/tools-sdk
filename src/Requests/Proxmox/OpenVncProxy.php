@@ -25,6 +25,7 @@ class OpenVncProxy extends Request
         $data = fluent($response->json());
         
         return new VncProxy(
+            host: $data->string('host'),
             port: $data->integer('port'),
             password: $data->string('password'),
         );
