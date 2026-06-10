@@ -19,6 +19,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
             $connector = new ToolsConnector(
                 apiKey: config('tools-sdk.token'),
                 baseUrl: config('tools-sdk.url'),
+                guzzleOptions: config('tools-sdk.guzzle_options'),
             );
             
             if(config('tools-sdk.mock')){

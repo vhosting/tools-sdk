@@ -23,6 +23,7 @@ class ToolsConnector extends Connector implements HasPagination
     public function __construct(
         protected readonly string $apiKey,
         protected readonly string $baseUrl = 'https://tools.vhosting-it.com/',
+        protected readonly array $guzzleOptions = [],
     ) {
     }
     
@@ -48,6 +49,11 @@ class ToolsConnector extends Connector implements HasPagination
             'Accept' => 'application/json',
             'X-Locale' => self::$locale ?? 'en',
         ];
+    }
+    
+    public function defaultConfig(): array
+    {
+        return $this->guzzleOptions;
     }
     
     public function paginate(Request $request): Paginator

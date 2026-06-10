@@ -39,5 +39,21 @@ return [
     */
 
     'mock' => env('TOOLS_MOCK', false),
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Guzzle Options
+    |--------------------------------------------------------------------------
+    |
+    | This is an array of options that will be passed to the Guzzle HTTP client.
+    | Useful for customizing the behavior of the SDK.
+    | For more information, see the Guzzle documentation:
+    | https://docs.guzzlephp.org/en/stable/request-options.html
+    |
+    */
+    
+    'guzzle_options' => [
+        //
+    ],
 
 ];
