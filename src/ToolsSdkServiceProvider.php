@@ -36,4 +36,11 @@ class ToolsSdkServiceProvider extends ServiceProvider
             return $connector;
         });
     }
+    
+    public function boot(): void
+    {
+        $this->publishes([
+            __DIR__.'/../config/tools-sdk.php' => config_path('tools-sdk.php'),
+        ], 'tools-sdk');
+    }
 }
