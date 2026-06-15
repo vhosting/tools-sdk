@@ -6,7 +6,9 @@ use Saloon\Http\Connector;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
+use VHosting\ToolsSdk\Types\Proxmox\StatsTimeframe;
 use VHosting\ToolsSdk\Types\Proxmox\VncProxy;
 use VHosting\ToolsSdk\Types\ProxmoxVm;
 
@@ -34,5 +36,10 @@ class ProxmoxVmResource
     public function openVncProxy(): VncProxy
     {
         return $this->connector->send(new OpenVncProxy($this->id))->dto();
+    }
+    
+    public function stats(StatsTimeframe $timeframe): array
+    {
+        return $this->connector->send(new GetVmStats($this->id, $timeframe))->dto();
     }
 }
