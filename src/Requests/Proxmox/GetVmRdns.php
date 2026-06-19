@@ -31,7 +31,7 @@ class GetVmRdns extends Request
         
             return new Rdns(
                 ip: $data->string('ip'),
-                reverse: $data->string('reverse'),
+                reverse: $data->get('reverse'),
             );
             
         }, $response->json());
