@@ -2,7 +2,7 @@
 
 namespace VHosting\ToolsSdk\Types;
 
-class ProxmoxIp
+class ProxmoxIp extends BaseType
 {
     public function __construct(
         public int $id,

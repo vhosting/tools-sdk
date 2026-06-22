@@ -3,8 +3,9 @@
 namespace VHosting\ToolsSdk\Types\Proxmox;
 
 use Carbon\Carbon;
+use VHosting\ToolsSdk\Types\BaseType;
 
-class Stats
+class Stats extends BaseType
 {
     public function __construct(
         public Carbon $time,

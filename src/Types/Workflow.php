@@ -4,7 +4,7 @@ namespace VHosting\ToolsSdk\Types;
 
 use Illuminate\Support\Collection;
 
-class Workflow
+class Workflow extends BaseType
 {
     public function __construct(
         public int $id,

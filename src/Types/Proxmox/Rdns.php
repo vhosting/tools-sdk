@@ -2,7 +2,9 @@
 
 namespace VHosting\ToolsSdk\Types\Proxmox;
 
-class Rdns
+use VHosting\ToolsSdk\Types\BaseType;
+
+class Rdns extends BaseType
 {
     public function __construct(
         public string $ip,

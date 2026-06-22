@@ -2,7 +2,7 @@
 
 namespace VHosting\ToolsSdk\Types;
 
-class ProxmoxBackup
+class ProxmoxBackup extends BaseType
 {
     public function __construct(
         public string $size,

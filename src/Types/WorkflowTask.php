@@ -2,7 +2,7 @@
 
 namespace VHosting\ToolsSdk\Types;
 
-class WorkflowTask
+class WorkflowTask extends BaseType
 {
     public function __construct(
         public int $id,

@@ -2,7 +2,9 @@
 
 namespace VHosting\ToolsSdk\Types\Proxmox;
 
-class VncProxy
+use VHosting\ToolsSdk\Types\BaseType;
+
+class VncProxy extends BaseType
 {
     public function __construct(
         public string $host,

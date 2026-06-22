@@ -2,7 +2,7 @@
 
 namespace VHosting\ToolsSdk\Types;
 
-class ProxmoxPlan
+class ProxmoxPlan extends BaseType
 {
     public function __construct(
         public int $id,
