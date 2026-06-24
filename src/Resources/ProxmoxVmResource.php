@@ -64,4 +64,9 @@ class ProxmoxVmResource
     {
         return $this->connector->send(new GetVmRdns($this->id))->dto();
     }
+    
+    public function iso(): ProxmoxVmIsoResource
+    {
+        return new ProxmoxVmIsoResource($this->connector, $this->id);
+    }
 }
