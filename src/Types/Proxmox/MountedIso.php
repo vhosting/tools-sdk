@@ -9,7 +9,7 @@ class MountedIso extends BaseType
 {
     public function __construct(
         public bool $mounted,
-        public string $iso,
+        public ?string $iso,
     ) {
     }
 }
