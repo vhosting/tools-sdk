@@ -24,7 +24,7 @@ class ProxmoxVmIsoResource
         return $this->connector->send(new GetIsoList($this->vmId))->dto();
     }
     
-    public function isMounted(): MountedIso
+    public function check(): MountedIso
     {
         return $this->connector->send(new CheckIsoMounted($this->vmId))->dto();
     }
