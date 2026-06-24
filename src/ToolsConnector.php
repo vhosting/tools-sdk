@@ -10,8 +10,11 @@ use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\PaginationPlugin\Paginator;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
+use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Resources\ProxmoxResource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
+use VHosting\ToolsSdk\Types\Enums\TaskPriority;
+use VHosting\ToolsSdk\Types\Enums\TaskStatus;
 
 class ToolsConnector extends Connector implements HasPagination
 {
@@ -69,5 +72,25 @@ class ToolsConnector extends Connector implements HasPagination
     public function proxmox(): ProxmoxResource
     {
         return new ProxmoxResource($this);
+    }
+    
+    public function createTask(
+        string $title,
+        int $category_id,
+        ?string $description = null,
+        TaskStatus $status = TaskStatus::Pending,
+        TaskPriority $priority = TaskPriority::Medium,
+        ?string $expires_at = null,
+        array $assignees = [],
+    ): void {
+        $this->send(new CreateTask(
+            title: $title,
+            category_id: $category_id,
+            description: $description,
+            status: $status,
+            priority: $priority,
+            expires_at: $expires_at,
+            assignees: $assignees,
+        ));
     }
 }
