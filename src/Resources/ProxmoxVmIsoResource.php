@@ -8,6 +8,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\Iso\GetIsoList;
 use VHosting\ToolsSdk\Requests\Proxmox\Iso\MountIso;
 use VHosting\ToolsSdk\Requests\Proxmox\Iso\UnmountIso;
 use VHosting\ToolsSdk\Types\Proxmox\Iso;
+use VHosting\ToolsSdk\Types\Proxmox\MountedIso;
 
 class ProxmoxVmIsoResource
 {
@@ -23,7 +24,7 @@ class ProxmoxVmIsoResource
         return $this->connector->send(new GetIsoList($this->vmId))->dto();
     }
     
-    public function isMounted(): bool
+    public function isMounted(): MountedIso
     {
         return $this->connector->send(new CheckIsoMounted($this->vmId))->dto();
     }
