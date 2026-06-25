@@ -20,6 +20,11 @@ class Mocks
     
     public static function emptyArray(): MockResponse
     {
+        return MockResponse::make([]);
+    }
+    
+    public static function emptyPagination(): MockResponse
+    {
         return MockResponse::make([
             'data' => [],
             'links' => [

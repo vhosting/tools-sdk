@@ -58,7 +58,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     // workflow
                     DispatchWorkflow::class => Mocks::workflow(201),
                     GetWorkflow::class => Mocks::workflow(),
-                    GetWorkflows::class => Mocks::emptyArray(),
+                    GetWorkflows::class => Mocks::emptyPagination(),
                     RetryWorkflow::class => Mocks::noContent(),
                 ]);
                 
