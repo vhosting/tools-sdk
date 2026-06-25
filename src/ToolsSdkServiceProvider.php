@@ -4,6 +4,18 @@ namespace VHosting\ToolsSdk;
 
 use Illuminate\Support\ServiceProvider;
 use Saloon\Http\Faking\MockClient;
+use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
+use VHosting\ToolsSdk\Requests\Proxmox\Iso\CheckIsoMounted;
+use VHosting\ToolsSdk\Requests\Proxmox\Iso\GetIsoList;
+use VHosting\ToolsSdk\Requests\Proxmox\Iso\MountIso;
+use VHosting\ToolsSdk\Requests\Proxmox\Iso\UnmountIso;
+use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
+use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Requests\Workflow\DispatchWorkflow;
 use VHosting\ToolsSdk\Requests\Workflow\GetWorkflow;
 use VHosting\ToolsSdk\Requests\Workflow\GetWorkflows;
@@ -24,10 +36,29 @@ class ToolsSdkServiceProvider extends ServiceProvider
             
             if(config('tools-sdk.mock')){
                 $mockClient = new MockClient([
-                    GetWorkflows::class => Mocks::emptyArray(),
-                    GetWorkflow::class => Mocks::workflow(),
-                    RetryWorkflow::class => Mocks::noContent(),
+                    // promox.iso
+                    CheckIsoMounted::class => Mocks::custom(['mounted' => true, 'iso' => 'Custom ISO name']),
+                    GetIsoList::class => Mocks::emptyArray(),
+                    MountIso::class => Mocks::noContent(),
+                    UnmountIso::class => Mocks::noContent(),
+                    
+                    // proxmox
+                    GetPlans::class => Mocks::emptyArray(),
+                    GetVm::class => Mocks::vm(),
+                    GetVmBackups::class => Mocks::emptyArray(),
+                    GetVmIps::class => Mocks::emptyArray(),
+                    GetVmRdns::class => Mocks::emptyArray(),
+                    GetVmStats::class => Mocks::emptyArray(),
+                    OpenVncProxy::class => Mocks::noContent(),
+                    
+                    // task
+                    CreateTask::class => Mocks::noContent(),
+                    
+                    // workflow
                     DispatchWorkflow::class => Mocks::workflow(201),
+                    GetWorkflow::class => Mocks::workflow(),
+                    GetWorkflows::class => Mocks::emptyArray(),
+                    RetryWorkflow::class => Mocks::noContent(),
                 ]);
                 
                 $connector->withMockClient($mockClient);

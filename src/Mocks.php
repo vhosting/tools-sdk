@@ -11,6 +11,11 @@ class Mocks
         return MockResponse::make(status: 204);
     }
     
+    public static function custom(array $data, int $status = 200): MockResponse
+    {
+        return MockResponse::make($data, $status);
+    }
+    
     public static function emptyArray(): MockResponse
     {
         return MockResponse::make([
@@ -48,5 +53,20 @@ class Mocks
                 ],
             ],
         ], $status);
+    }
+    
+    public static function vm(): MockResponse
+    {
+        return MockResponse::make([
+            'id' => 0,
+            'type' => 'vm',
+            'node_id' => 0,
+            'plan_id' => 0,
+            'hostname' => 'my-vm',
+            'vm_status' => 'running',
+            'product_status' => 'active',
+            'created_at' => '2026-03-09T13:46:51.000000Z',
+            'updated_at' => '2026-03-09T13:46:51.000000Z',
+        ]);
     }
 }
