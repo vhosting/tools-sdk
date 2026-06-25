@@ -3,6 +3,8 @@
 namespace VHosting\ToolsSdk;
 
 use Saloon\Http\Faking\MockResponse;
+use Saloon\Http\PendingRequest;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 
 class Mocks
 {
@@ -55,10 +57,13 @@ class Mocks
         ], $status);
     }
     
-    public static function vm(): MockResponse
+    public static function vm(PendingRequest $request): MockResponse
     {
+        /** @var GetVm $request */
+        $request = $request->getRequest();
+        
         return MockResponse::make([
-            'id' => 0,
+            'id' => $request->id,
             'type' => 'vm',
             'node_id' => 0,
             'plan_id' => 0,

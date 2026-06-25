@@ -4,6 +4,7 @@ namespace VHosting\ToolsSdk;
 
 use Illuminate\Support\ServiceProvider;
 use Saloon\Http\Faking\MockClient;
+use Saloon\Http\PendingRequest;
 use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
@@ -44,7 +45,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     
                     // proxmox
                     GetPlans::class => Mocks::emptyArray(),
-                    GetVm::class => Mocks::vm(),
+                    GetVm::class => fn (PendingRequest $request) => Mocks::vm($request),
                     GetVmBackups::class => Mocks::emptyArray(),
                     GetVmIps::class => Mocks::emptyArray(),
                     GetVmRdns::class => Mocks::emptyArray(),

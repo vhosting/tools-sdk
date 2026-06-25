@@ -5,14 +5,13 @@ namespace VHosting\ToolsSdk\Requests\Proxmox;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use VHosting\ToolsSdk\Types\ProxmoxPlan;
 use VHosting\ToolsSdk\Types\ProxmoxVm;
 
 class GetVm extends Request
 {
     protected Method $method = Method::GET;
     
-    public function __construct(protected readonly int $id)
+    public function __construct(public readonly int $id)
     {
     }
     
