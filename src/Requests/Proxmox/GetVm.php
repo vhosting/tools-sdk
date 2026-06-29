@@ -32,6 +32,7 @@ class GetVm extends Request
             hostname: $data->string('hostname'),
             vm_status: $data->string('vm_status'),
             product_status: $data->string('product_status'),
+            phpmyadmin_url: $data->get('phpmyadmin_url'),
             created_at: $data->string('created_at'),
             updated_at: $data->string('updated_at'),
         );
