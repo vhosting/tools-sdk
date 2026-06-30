@@ -69,4 +69,9 @@ class ProxmoxVmResource
     {
         return new ProxmoxVmIsoResource($this->connector, $this->id);
     }
+    
+    public function virtio(): ProxmoxVmVirtioResource
+    {
+        return new ProxmoxVmVirtioResource($this->connector, $this->id);
+    }
 }

@@ -11,10 +11,8 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
-use VHosting\ToolsSdk\Requests\Proxmox\Iso\CheckIsoMounted;
-use VHosting\ToolsSdk\Requests\Proxmox\Iso\GetIsoList;
-use VHosting\ToolsSdk\Requests\Proxmox\Iso\MountIso;
-use VHosting\ToolsSdk\Requests\Proxmox\Iso\UnmountIso;
+use VHosting\ToolsSdk\Requests\Proxmox\Iso\{CheckIsoMounted, GetIsoList, MountIso, UnmountIso};
+use VHosting\ToolsSdk\Requests\Proxmox\Virtio\{CheckVirtioMounted, GetVirtioList, MountVirtio, UnmountVirtio};
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
 use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Requests\Workflow\DispatchWorkflow;
@@ -42,6 +40,12 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetIsoList::class => Mocks::emptyArray(),
                     MountIso::class => Mocks::noContent(),
                     UnmountIso::class => Mocks::noContent(),
+                    
+                    // promox.virtio
+                    CheckVirtioMounted::class => Mocks::custom(['mounted' => true, 'iso' => 'Custom ISO name']),
+                    GetVirtioList::class => Mocks::emptyArray(),
+                    MountVirtio::class => Mocks::noContent(),
+                    UnmountVirtio::class => Mocks::noContent(),
                     
                     // proxmox
                     GetPlans::class => Mocks::emptyArray(),
