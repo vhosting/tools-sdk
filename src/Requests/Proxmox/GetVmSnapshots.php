@@ -35,7 +35,7 @@ class GetVmSnapshots extends Request
                 description: $data->get('description'),
                 parent: $data->get('parent'),
                 created_at: $data->date('created_at'),
-                is_current: $data->boolean('current'),
+                is_current: $data->boolean('is_current'),
             );
             
         }, $response->json());
