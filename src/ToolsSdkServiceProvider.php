@@ -10,6 +10,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\Iso\{CheckIsoMounted, GetIsoList, MountIso, UnmountIso};
 use VHosting\ToolsSdk\Requests\Proxmox\Virtio\{CheckVirtioMounted, GetVirtioList, MountVirtio, UnmountVirtio};
@@ -55,6 +56,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetVmRdns::class => Mocks::emptyArray(),
                     GetVmStats::class => Mocks::emptyArray(),
                     OpenVncProxy::class => Mocks::noContent(),
+                    GetVmSnapshots::class => Mocks::emptyArray(),
                     
                     // task
                     CreateTask::class => Mocks::noContent(),

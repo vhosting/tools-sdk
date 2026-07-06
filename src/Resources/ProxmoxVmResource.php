@@ -7,6 +7,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
 use VHosting\ToolsSdk\Types\Proxmox\Rdns;
@@ -73,5 +74,10 @@ class ProxmoxVmResource
     public function virtio(): ProxmoxVmVirtioResource
     {
         return new ProxmoxVmVirtioResource($this->connector, $this->id);
+    }
+    
+    public function snapshots(): array
+    {
+        return $this->connector->send(new GetVmSnapshots($this->id))->dto();
     }
 }
