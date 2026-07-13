@@ -13,6 +13,10 @@ class ProxmoxVm extends BaseType
         public string $vm_status,
         public string $product_status,
         public ?string $phpmyadmin_url,
+        public ?string $dns1,
+        public ?string $dns2,
+        public ?string $ntp1,
+        public ?string $ntp2,
         public ?string $created_at,
         public ?string $updated_at,
     )

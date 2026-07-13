@@ -75,6 +75,11 @@ class Mocks
             'hostname' => 'my-vm',
             'vm_status' => 'running',
             'product_status' => 'active',
+            'phpmyadmin_url' => null,
+            'dns1' => null,
+            'dns2' => null,
+            'ntp1' => null,
+            'ntp2' => null,
             'created_at' => '2026-03-09T13:46:51.000000Z',
             'updated_at' => '2026-03-09T13:46:51.000000Z',
         ]);
