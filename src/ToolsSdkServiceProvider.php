@@ -28,7 +28,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/tools-sdk.php', 'tools-sdk');
         
-        $this->app->bind('tools-sdk', function () {
+        $this->app->bind(ToolsConnector::class, function () {
             $connector = new ToolsConnector(
                 apiKey: config('tools-sdk.token'),
                 baseUrl: config('tools-sdk.url'),

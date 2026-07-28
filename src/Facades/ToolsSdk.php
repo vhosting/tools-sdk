@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 use Saloon\Laravel\Facades\Saloon;
 use VHosting\ToolsSdk\Resources\ProxmoxResource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
+use VHosting\ToolsSdk\ToolsConnector;
 
 /**
  * @method static WorkflowResource workflow()
@@ -16,7 +17,7 @@ class ToolsSdk extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'tools-sdk';
+        return ToolsConnector::class;
     }
     
     public static function fake(array $responses): void
