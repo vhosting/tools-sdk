@@ -5,6 +5,7 @@ namespace VHosting\ToolsSdk;
 use Illuminate\Support\ServiceProvider;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\PendingRequest;
+use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
 use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
@@ -66,6 +67,9 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetWorkflow::class => Mocks::workflow(),
                     GetWorkflows::class => Mocks::emptyPagination(),
                     RetryWorkflow::class => Mocks::noContent(),
+                    
+                    // checks
+                    UpdateChecks::class => Mocks::noContent(),
                 ]);
                 
                 $connector->withMockClient($mockClient);

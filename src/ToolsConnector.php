@@ -10,6 +10,7 @@ use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\PaginationPlugin\Paginator;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
+use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
 use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Resources\ProxmoxResource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
@@ -92,5 +93,14 @@ class ToolsConnector extends Connector implements HasPagination
             expires_at: $expires_at,
             assignees: $assignees,
         ));
+    }
+    
+    /**
+     * @param array{id:string,result:int}[] $data
+     * @return void
+     */
+    public function updateChecks(array $data): void
+    {
+        $this->send(new UpdateChecks($data));
     }
 }
