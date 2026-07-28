@@ -11,6 +11,7 @@ use VHosting\ToolsSdk\ToolsConnector;
 /**
  * @method static WorkflowResource workflow()
  * @method static ProxmoxResource proxmox()
+ * @method static void updateChecks(int $domainId, array $data)
  * @see \VHosting\ToolsSdk\ToolsConnector
  */
 class ToolsSdk extends Facade

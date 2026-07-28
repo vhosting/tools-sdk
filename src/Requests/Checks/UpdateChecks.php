@@ -15,9 +15,10 @@ class UpdateChecks extends Request implements HasBody
     protected Method $method = Method::POST;
     
     /**
+     * @param int $domainId
      * @param array{id:string,result:int}[] $data
      */
-    public function __construct(protected array $data = [])
+    public function __construct(protected int $domainId, protected array $data = [])
     {
     }
     
@@ -29,6 +30,7 @@ class UpdateChecks extends Request implements HasBody
     protected function defaultBody(): array
     {
         return [
+            'id' => $this->domainId,
             'data' => $this->data,
         ];
     }

@@ -3,6 +3,8 @@
 namespace VHosting\ToolsSdk;
 
 use Saloon\Contracts\Authenticator;
+use Saloon\Exceptions\Request\FatalRequestException;
+use Saloon\Exceptions\Request\RequestException;
 use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\Http\Request;
@@ -96,11 +98,12 @@ class ToolsConnector extends Connector implements HasPagination
     }
     
     /**
+     * @param int $domainId
      * @param array{id:string,result:int}[] $data
      * @return void
      */
-    public function updateChecks(array $data): void
+    public function updateChecks(int $domainId, array $data): void
     {
-        $this->send(new UpdateChecks($data));
+        $this->send(new UpdateChecks($domainId, $data));
     }
 }
