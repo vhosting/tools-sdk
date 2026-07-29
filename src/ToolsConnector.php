@@ -13,11 +13,13 @@ use Saloon\PaginationPlugin\Paginator;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
+use VHosting\ToolsSdk\Requests\Servers\GetServers;
 use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Resources\ProxmoxResource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
 use VHosting\ToolsSdk\Types\Enums\TaskPriority;
 use VHosting\ToolsSdk\Types\Enums\TaskStatus;
+use VHosting\ToolsSdk\Types\Server;
 
 class ToolsConnector extends Connector implements HasPagination
 {
@@ -105,5 +107,13 @@ class ToolsConnector extends Connector implements HasPagination
     public function updateChecks(int $domainId, array $data): void
     {
         $this->send(new UpdateChecks($domainId, $data));
+    }
+    
+    /**
+     * @return Server[]
+     */
+    public function servers(): array
+    {
+        return $this->send(new GetServers())->dto();
     }
 }
