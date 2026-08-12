@@ -5,6 +5,7 @@ namespace VHosting\ToolsSdk;
 use Saloon\Http\Faking\MockResponse;
 use Saloon\Http\PendingRequest;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
+use VHosting\ToolsSdk\Requests\S3\GetS3Info;
 
 class Mocks
 {
@@ -80,6 +81,23 @@ class Mocks
             'dns2' => null,
             'ntp1' => null,
             'ntp2' => null,
+            'created_at' => '2026-03-09T13:46:51.000000Z',
+            'updated_at' => '2026-03-09T13:46:51.000000Z',
+        ]);
+    }
+    
+    public static function s3(PendingRequest $request): MockResponse
+    {
+        $request = $request->getRequest();
+        /** @var GetS3Info $request */
+        
+        return MockResponse::make([
+            'id' => $request->id,
+            'user' => 'user123',
+            'tenant' => 'tenant',
+            'access_key' => 'ak123456789',
+            'secret_key' => 'sk123456789',
+            'product_status' => 'active',
             'created_at' => '2026-03-09T13:46:51.000000Z',
             'updated_at' => '2026-03-09T13:46:51.000000Z',
         ]);

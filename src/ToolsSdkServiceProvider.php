@@ -16,6 +16,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\Iso\{CheckIsoMounted, GetIsoList, MountIso, UnmountIso};
 use VHosting\ToolsSdk\Requests\Proxmox\Virtio\{CheckVirtioMounted, GetVirtioList, MountVirtio, UnmountVirtio};
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
+use VHosting\ToolsSdk\Requests\S3\GetS3Info;
 use VHosting\ToolsSdk\Requests\Servers\GetServers;
 use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Requests\Workflow\DispatchWorkflow;
@@ -74,6 +75,9 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     
                     // server
                     GetServers::class => Mocks::emptyArray(),
+                    
+                     //s3
+                    GetS3Info::class => fn (PendingRequest $request) =>  Mocks::s3($request),
                 ]);
                 
                 $connector->withMockClient($mockClient);

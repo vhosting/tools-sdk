@@ -5,6 +5,7 @@ namespace VHosting\ToolsSdk\Facades;
 use Illuminate\Support\Facades\Facade;
 use Saloon\Laravel\Facades\Saloon;
 use VHosting\ToolsSdk\Resources\ProxmoxResource;
+use VHosting\ToolsSdk\Resources\S3Resource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
 use VHosting\ToolsSdk\ToolsConnector;
 use VHosting\ToolsSdk\Types\Server;
@@ -12,6 +13,7 @@ use VHosting\ToolsSdk\Types\Server;
 /**
  * @method static WorkflowResource workflow()
  * @method static ProxmoxResource proxmox()
+ * @method static S3Resource s3(int $id)
  * @method static void updateChecks(int $domainId, array $data)
  * @method static Server[] servers()
  * @see \VHosting\ToolsSdk\ToolsConnector
