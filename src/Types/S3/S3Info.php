@@ -13,8 +13,8 @@ class S3Info
         public string $access_key,
         public string $secret_key,
         public S3ProductStatus $product_status,
-        public CarbonImmutable $created_at,
-        public CarbonImmutable $updated_at,
+        public ?CarbonImmutable $created_at,
+        public ?CarbonImmutable $updated_at,
     ) {
     }
 }

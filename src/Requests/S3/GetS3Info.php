@@ -32,8 +32,8 @@ class GetS3Info extends Request
             access_key: $data->string('access_key'),
             secret_key: $data->string('secret_key'),
             product_status: $data->enum('product_status', S3ProductStatus::class),
-            created_at: $data->date('created_at')->toImmutable(),
-            updated_at: $data->date('updated_at')->toImmutable(),
+            created_at: $data->date('created_at')?->toImmutable(),
+            updated_at: $data->date('updated_at')?->toImmutable(),
         );
     }
 }
