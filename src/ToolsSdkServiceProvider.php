@@ -62,7 +62,11 @@ class ToolsSdkServiceProvider extends ServiceProvider
                         ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
                     ]),
                     GetVmIps::class => Mocks::emptyArray(),
-                    GetVmRdns::class => Mocks::emptyArray(),
+                    GetVmRdns::class => Mocks::custom([
+                        ['ip' => '192.168.1.1', 'hostname' => 'foo.tld'],
+                        ['ip' => '192.168.1.2', 'hostname' => 'bar.tld'],
+                        ['ip' => '192.168.1.3', 'hostname' => 'baz.tld'],
+                    ]),
                     GetVmStats::class => Mocks::emptyArray(),
                     OpenVncProxy::class => Mocks::noContent(),
                     GetVmSnapshots::class => Mocks::custom([
