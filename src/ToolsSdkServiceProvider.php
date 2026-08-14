@@ -55,7 +55,11 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     // proxmox
                     GetPlans::class => Mocks::emptyArray(),
                     GetVm::class => fn (PendingRequest $request) => Mocks::vm($request),
-                    GetVmBackups::class => Mocks::emptyArray(),
+                    GetVmBackups::class => Mocks::custom([
+                        ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
+                        ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
+                        ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
+                    ]),
                     GetVmIps::class => Mocks::emptyArray(),
                     GetVmRdns::class => Mocks::emptyArray(),
                     GetVmStats::class => Mocks::emptyArray(),

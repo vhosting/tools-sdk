@@ -104,7 +104,7 @@ class Mocks
         ]);
     }
     
-    public function s3Buckets(): MockResponse
+    public static function s3Buckets(): MockResponse
     {
         return MockResponse::make([
             'quota' => 1489621,
