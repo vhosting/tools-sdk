@@ -61,7 +61,23 @@ class ToolsSdkServiceProvider extends ServiceProvider
                         ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
                         ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
                     ]),
-                    GetVmIps::class => Mocks::emptyArray(),
+                    GetVmIps::class => Mocks::custom([
+                        [
+                            'id' => 1,
+                            'cluster_id' => 2,
+                            'plan_group_id' => 3,
+                            'ip' => '58.65.9.8',
+                            'cidr' => '24',
+                            'gateway' => '58.65.9.1',
+                            'bridge' => 'bridge',
+                            'type' => 'ipv4',
+                            'enabled' => true,
+                            'note' => 'foo',
+                            'reserved' => false,
+                            'created_at' => now()->toIso8601ZuluString(),
+                            'updated_at' => now()->toIso8601ZuluString(),
+                        ]
+                    ]),
                     GetVmRdns::class => Mocks::custom([
                         ['ip' => '192.168.1.1', 'hostname' => 'foo.tld'],
                         ['ip' => '192.168.1.2', 'hostname' => 'bar.tld'],
