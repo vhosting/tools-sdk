@@ -3,6 +3,7 @@
 namespace VHosting\ToolsSdk;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\PendingRequest;
 use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
@@ -64,7 +65,22 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetVmRdns::class => Mocks::emptyArray(),
                     GetVmStats::class => Mocks::emptyArray(),
                     OpenVncProxy::class => Mocks::noContent(),
-                    GetVmSnapshots::class => Mocks::emptyArray(),
+                    GetVmSnapshots::class => Mocks::custom([
+                        [
+                            'name' => Str::uuid7(),
+                            'description' => 'foo',
+                            'parent' => null,
+                            'created_at' => now()->toIso8601ZuluString(),
+                            'is_current' => true,
+                        ],
+                        [
+                            'name' => Str::uuid7(),
+                            'description' => 'bar',
+                            'parent' => 'foo',
+                            'created_at' => now()->toIso8601ZuluString(),
+                            'is_current' => true,
+                        ]
+                    ]),
                     
                     // task
                     CreateTask::class => Mocks::noContent(),
