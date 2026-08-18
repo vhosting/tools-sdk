@@ -30,6 +30,7 @@ class GetVmBackups extends Request
             $data = fluent($item);
         
             return new ProxmoxBackup(
+                volid: $data->string('volid'),
                 size: $data->string('size'),
                 created: $data->string('created'),
             );

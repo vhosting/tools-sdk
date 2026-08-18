@@ -57,9 +57,9 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetPlans::class => Mocks::emptyArray(),
                     GetVm::class => fn (PendingRequest $request) => Mocks::vm($request),
                     GetVmBackups::class => Mocks::custom([
-                        ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
-                        ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
-                        ['size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
+                        ['volid' => 'a', 'size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
+                        ['volid' => 'b', 'size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
+                        ['volid' => 'c', 'size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
                     ]),
                     GetVmIps::class => Mocks::custom([
                         [
