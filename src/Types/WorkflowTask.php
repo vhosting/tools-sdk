@@ -10,7 +10,6 @@ class WorkflowTask extends BaseType
         public string $description,
         public int $order,
         public string $status,
-        public ?string $error,
         public ?string $started_at,
         public ?string $stopped_at,
         public ?string $created_at,

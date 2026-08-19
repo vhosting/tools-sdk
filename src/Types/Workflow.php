@@ -25,7 +25,6 @@ class Workflow extends BaseType
             description: $item['description'],
             order: $item['order'],
             status: $item['status'],
-            error: $item['error'],
             started_at: $item['started_at'],
             stopped_at: $item['stopped_at'],
             created_at: $item['created_at'],
