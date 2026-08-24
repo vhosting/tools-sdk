@@ -3,6 +3,8 @@
 namespace VHosting\ToolsSdk\Resources;
 
 use Saloon\Http\Connector;
+use VHosting\ToolsSdk\Requests\S3\CreateS3Bucket;
+use VHosting\ToolsSdk\Requests\S3\DeleteS3Bucket;
 use VHosting\ToolsSdk\Requests\S3\GetS3Buckets;
 use VHosting\ToolsSdk\Requests\S3\GetS3Info;
 use VHosting\ToolsSdk\Types\S3\S3Buckets;
@@ -22,5 +24,15 @@ class S3Resource
     public function buckets(): S3Buckets
     {
         return $this->connector->send(new GetS3Buckets($this->id))->dto();
+    }
+    
+    public function createBucket(string $name): void
+    {
+        $this->connector->send(new CreateS3Bucket($this->id, $name));
+    }
+    
+    public function deleteBucket(string $name): void
+    {
+        $this->connector->send(new DeleteS3Bucket($this->id, $name));
     }
 }
