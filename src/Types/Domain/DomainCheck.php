@@ -2,18 +2,17 @@
 
 namespace VHosting\ToolsSdk\Types\Domain;
 
-use Carbon\CarbonImmutable;
-use Illuminate\Support\Collection;
+use VHosting\ToolsSdk\Types\BaseType;
 
-readonly class DomainCheck
+class DomainCheck extends BaseType
 {
     public function __construct(
-        public int $id,
-        public int $domain_id,
-        public string $type,
-        public bool $result,
-        public string $short,
-        public string $label,
+        public readonly int $id,
+        public readonly int $domain_id,
+        public readonly string $type,
+        public readonly bool $result,
+        public readonly string $short,
+        public readonly string $label,
     ) {
     }
 }

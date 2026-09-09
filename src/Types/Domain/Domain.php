@@ -4,8 +4,9 @@ namespace VHosting\ToolsSdk\Types\Domain;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
+use VHosting\ToolsSdk\Types\BaseType;
 
-readonly class Domain
+class Domain extends BaseType
 {
     /**
      * @param int $id
@@ -21,17 +22,17 @@ readonly class Domain
      * @param Collection<DomainCheck>|null $checks
      */
     public function __construct(
-        public int $id,
-        public string $name,
-        public ?int $web_server_id,
-        public string $dkim,
-        public string $mail_server,
-        public string $autodiscover,
-        public ?CarbonImmutable $created_at,
-        public ?CarbonImmutable $updated_at,
-        public ?CarbonImmutable $locked_at,
-        public ?CarbonImmutable $checked_at,
-        public ?Collection $checks,
+        public readonly int $id,
+        public readonly string $name,
+        public readonly ?int $web_server_id,
+        public readonly string $dkim,
+        public readonly string $mail_server,
+        public readonly string $autodiscover,
+        public readonly ?CarbonImmutable $created_at,
+        public readonly ?CarbonImmutable $updated_at,
+        public readonly ?CarbonImmutable $locked_at,
+        public readonly ?CarbonImmutable $checked_at,
+        public readonly ?Collection $checks,
     )
     {
     }
