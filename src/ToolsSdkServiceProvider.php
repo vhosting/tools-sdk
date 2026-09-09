@@ -27,6 +27,7 @@ use VHosting\ToolsSdk\Requests\Workflow\DispatchWorkflow;
 use VHosting\ToolsSdk\Requests\Workflow\GetWorkflow;
 use VHosting\ToolsSdk\Requests\Workflow\GetWorkflows;
 use VHosting\ToolsSdk\Requests\Workflow\RetryWorkflow;
+use VHosting\ToolsSdk\Resources\DomainResource;
 
 class ToolsSdkServiceProvider extends ServiceProvider
 {
@@ -112,6 +113,9 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetWorkflow::class => Mocks::workflow(),
                     GetWorkflows::class => Mocks::emptyPagination(),
                     RetryWorkflow::class => Mocks::noContent(),
+                    
+                    // domain
+                    DomainResource::class => Mocks::domain(),
                     
                     // checks
                     UpdateChecks::class => Mocks::noContent(),

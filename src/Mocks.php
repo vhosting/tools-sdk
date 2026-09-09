@@ -111,4 +111,30 @@ class Mocks
             'buckets' => [],
         ]);
     }
+    
+    public static function domain(): MockResponse
+    {
+        return MockResponse::make([
+            'id' => 1,
+            'name' => 'example.com',
+            'web_server_id' => 2,
+            'dkim' => 'dkim123',
+            'mail_server' => 'mail.example.com',
+            'autodiscover' => '127.0.0.1',
+            'created_at' => now()->toImmutable(),
+            'updated_at' => now()->toImmutable(),
+            'locked_at' => null,
+            'checked_at' => null,
+            'checks' => [
+                [
+                    'id' => 3,
+                    'domain_id' => 1,
+                    'type' => 'dkim',
+                    'result' => true,
+                    'short' => 'DKIM',
+                    'label' => 'DKIM',
+                ],
+            ],
+        ]);
+    }
 }
