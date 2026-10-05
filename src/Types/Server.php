@@ -12,7 +12,7 @@ class Server extends BaseType
         public string $name,
         public string $ip4,
         public ?string $ip6,
-        public ServerPanel $panel,
+        public ?ServerPanel $panel,
         public ?string $auth_key,
         public ?Carbon $created_at,
         public ?Carbon $updated_at,

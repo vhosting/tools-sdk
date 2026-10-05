@@ -6,4 +6,5 @@ enum ServerPanel: string
 {
     case CPanel = 'cpanel';
     case Plesk = 'plesk';
+    case DirectAdmin = 'directadmin';
 }
