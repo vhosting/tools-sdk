@@ -7,6 +7,10 @@ use Illuminate\Support\Str;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\PendingRequest;
 use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
+use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetCounter;
+use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetDkim;
+use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetLimit;
+use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetTimestamp;
 use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
@@ -33,7 +37,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/tools-sdk.php', 'tools-sdk');
+        $this->mergeConfigFrom(__DIR__ . '/../config/tools-sdk.php', 'tools-sdk');
         
         $this->app->bind(ToolsConnector::class, function () {
             $connector = new ToolsConnector(
@@ -42,7 +46,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                 guzzleOptions: config('tools-sdk.guzzle_options'),
             );
             
-            if(config('tools-sdk.mock')){
+            if (config('tools-sdk.mock')) {
                 $mockClient = new MockClient([
                     // promox.iso
                     CheckIsoMounted::class => Mocks::custom(['mounted' => true, 'iso' => 'Custom ISO name']),
@@ -58,7 +62,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     
                     // proxmox
                     GetPlans::class => Mocks::emptyArray(),
-                    GetVm::class => fn (PendingRequest $request) => Mocks::vm($request),
+                    GetVm::class => fn(PendingRequest $request) => Mocks::vm($request),
                     GetVmBackups::class => Mocks::custom([
                         ['volid' => 'a', 'size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
                         ['volid' => 'b', 'size' => '100 MB', 'created' => now()->toIso8601ZuluString()],
@@ -79,7 +83,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                             'reserved' => false,
                             'created_at' => now()->toIso8601ZuluString(),
                             'updated_at' => now()->toIso8601ZuluString(),
-                        ]
+                        ],
                     ]),
                     GetVmRdns::class => Mocks::custom([
                         ['ip' => '192.168.1.1', 'hostname' => 'foo.tld'],
@@ -102,7 +106,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                             'parent' => 'foo',
                             'created_at' => now()->toIso8601ZuluString(),
                             'is_current' => true,
-                        ]
+                        ],
                     ]),
                     
                     // task
@@ -123,11 +127,17 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     // server
                     GetServers::class => Mocks::emptyArray(),
                     
-                     //s3
-                    GetS3Info::class => fn (PendingRequest $request) =>  Mocks::s3($request),
+                    // s3
+                    GetS3Info::class => fn(PendingRequest $request) => Mocks::s3($request),
                     GetS3Buckets::class => Mocks::s3Buckets(),
                     CreateS3Bucket::class => Mocks::noContent(),
                     DeleteS3Bucket::class => Mocks::noContent(),
+                    
+                    // oqmilter dedicated
+                    GetCounter::class => Mocks::custom('69'),
+                    GetDkim::class => Mocks::custom('abcdefghi'),
+                    GetLimit::class => Mocks::custom('99'),
+                    GetTimestamp::class => fn() => Mocks::custom(date('Y-m-d H:i:s')),
                 ]);
                 
                 $connector->withMockClient($mockClient);
@@ -140,7 +150,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/tools-sdk.php' => config_path('tools-sdk.php'),
+            __DIR__ . '/../config/tools-sdk.php' => config_path('tools-sdk.php'),
         ], 'tools-sdk');
     }
 }

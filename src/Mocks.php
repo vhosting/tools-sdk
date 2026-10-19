@@ -15,7 +15,7 @@ class Mocks
         return MockResponse::make(status: 204);
     }
     
-    public static function custom(array $data, int $status = 200): MockResponse
+    public static function custom(array|string $data, int $status = 200): MockResponse
     {
         return MockResponse::make($data, $status);
     }

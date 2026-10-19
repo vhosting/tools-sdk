@@ -14,6 +14,7 @@ use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
 use VHosting\ToolsSdk\Requests\Servers\GetServers;
 use VHosting\ToolsSdk\Requests\Task\CreateTask;
 use VHosting\ToolsSdk\Resources\DomainResource;
+use VHosting\ToolsSdk\Resources\OqmilterDedicatedResource;
 use VHosting\ToolsSdk\Resources\ProxmoxResource;
 use VHosting\ToolsSdk\Resources\S3Resource;
 use VHosting\ToolsSdk\Resources\WorkflowResource;
@@ -87,6 +88,11 @@ class ToolsConnector extends Connector implements HasPagination
     public function domain(): DomainResource
     {
         return new DomainResource($this);
+    }
+    
+    public function oqmilterDedicated(string $domain): OqmilterDedicatedResource
+    {
+        return new OqmilterDedicatedResource($this, $domain);
     }
     
     public function createTask(
