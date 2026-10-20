@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\PendingRequest;
 use VHosting\ToolsSdk\Requests\Checks\UpdateChecks;
+use VHosting\ToolsSdk\Requests\Hosting\GetHostingAccount;
 use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetCounter;
 use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetDkim;
 use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetLimit;
@@ -138,6 +139,9 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetDkim::class => Mocks::custom('abcdefghi'),
                     GetLimit::class => Mocks::custom('99'),
                     GetTimestamp::class => fn() => Mocks::custom(date('Y-m-d H:i:s')),
+                    
+                    // hosting
+                    GetHostingAccount::class => Mocks::custom(['product_status' => 'active', 'domain' => 'foo', 'data' => []]),
                 ]);
                 
                 $connector->withMockClient($mockClient);
