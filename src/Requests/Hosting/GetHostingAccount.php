@@ -20,7 +20,7 @@ class GetHostingAccount extends Request
     
     public function resolveEndpoint(): string
     {
-        return sprintf('/api/hosting/domain/%d', $this->id);
+        return sprintf('/api/hosting/%d', $this->id);
     }
     
     public function createDtoFromResponse(Response $response): Account
