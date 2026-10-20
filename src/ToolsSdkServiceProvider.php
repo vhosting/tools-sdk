@@ -141,7 +141,12 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetTimestamp::class => fn() => Mocks::custom(date('Y-m-d H:i:s')),
                     
                     // hosting
-                    GetHostingAccount::class => Mocks::custom(['product_status' => 'active', 'domain' => 'foo', 'data' => []]),
+                    GetHostingAccount::class => Mocks::custom([
+                        'product_status' => 'active',
+                        'product_name' => 'lol',
+                        'domain' => 'foo',
+                        'data' => []
+                    ]),
                 ]);
                 
                 $connector->withMockClient($mockClient);
