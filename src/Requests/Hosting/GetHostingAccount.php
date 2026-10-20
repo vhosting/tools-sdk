@@ -29,6 +29,7 @@ class GetHostingAccount extends Request
         
         return new Account(
             product_status: $data->string('product_status'),
+            product_name: $data->string('product_name'),
             domain: $data->string('domain'),
             data: $data->array('data'),
         );

@@ -8,6 +8,7 @@ class Account extends BaseType
 {
     public function __construct(
         public string $product_status,
+        public string $product_name,
         public string $domain,
         public array $data = [],
     ) {
