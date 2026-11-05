@@ -77,6 +77,32 @@ echo $workflow->id;
 ToolsSdk::workflow()->retry(123);
 ```
 
+### Proxmox Kickstart
+
+```php
+use VHosting\ToolsSdk\Types\Proxmox\KickstartType;
+
+$kickstart = ToolsSdk::proxmox()->vm(123)->kickstart();
+
+$configuration = $kickstart->show();
+
+$configuration = $kickstart->upsert(
+    enabled: true,
+    type: KickstartType::UbuntuAutoInstall,
+    content: "#cloud-config\nautoinstall:\n  version: 1\n",
+);
+
+$configuration = $kickstart->upsert(
+    enabled: false,
+    type: $configuration->type,
+    content: $configuration->content,
+);
+
+$kickstart->destroy();
+```
+
+All three fields are required when creating or updating a configuration.
+
 ## Mocking for Tests
 
 The SDK integrates Saloon's faking system to facilitate testing:

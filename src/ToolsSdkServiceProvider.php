@@ -20,6 +20,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\Iso\{CheckIsoMounted, GetIsoList, MountIso, UnmountIso};
+use VHosting\ToolsSdk\Requests\Proxmox\Kickstart\{DeleteKickstart, GetKickstart, UpsertKickstart};
 use VHosting\ToolsSdk\Requests\Proxmox\Virtio\{CheckVirtioMounted, GetVirtioList, MountVirtio, UnmountVirtio};
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
 use VHosting\ToolsSdk\Requests\S3\CreateS3Bucket;
@@ -61,6 +62,11 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     MountVirtio::class => Mocks::noContent(),
                     UnmountVirtio::class => Mocks::noContent(),
                     
+                    // proxmox.kickstart
+                    GetKickstart::class => Mocks::kickstart(),
+                    UpsertKickstart::class => fn(PendingRequest $request) => Mocks::kickstart($request->getRequest()->body()->all()),
+                    DeleteKickstart::class => Mocks::noContent(),
+
                     // proxmox
                     GetPlans::class => Mocks::emptyArray(),
                     GetVm::class => fn(PendingRequest $request) => Mocks::vm($request),

@@ -75,6 +75,11 @@ class ProxmoxVmResource
     {
         return new ProxmoxVmVirtioResource($this->connector, $this->id);
     }
+
+    public function kickstart(): ProxmoxVmKickstartResource
+    {
+        return new ProxmoxVmKickstartResource($this->connector, $this->id);
+    }
     
     public function snapshots(): array
     {

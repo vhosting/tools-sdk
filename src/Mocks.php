@@ -111,6 +111,15 @@ class Mocks
             'buckets' => [],
         ]);
     }
+
+    public static function kickstart(array $data = []): MockResponse
+    {
+        return MockResponse::make(array_replace([
+            'enabled' => true,
+            'type' => 'ubuntu-autoinstall',
+            'content' => "#cloud-config\nautoinstall:\n  version: 1\n",
+        ], $data));
+    }
     
     public static function domain(): MockResponse
     {
