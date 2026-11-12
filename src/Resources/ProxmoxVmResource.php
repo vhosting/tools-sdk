@@ -5,11 +5,13 @@ namespace VHosting\ToolsSdk\Resources;
 use Saloon\Http\Connector;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmFirewall;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
+use VHosting\ToolsSdk\Types\Proxmox\Firewall;
 use VHosting\ToolsSdk\Types\Proxmox\Rdns;
 use VHosting\ToolsSdk\Types\Proxmox\Stats;
 use VHosting\ToolsSdk\Types\Proxmox\StatsTimeframe;
@@ -64,6 +66,11 @@ class ProxmoxVmResource
     public function rdns(): array
     {
         return $this->connector->send(new GetVmRdns($this->id))->dto();
+    }
+
+    public function firewall(): Firewall
+    {
+        return $this->connector->send(new GetVmFirewall($this->id))->dto();
     }
     
     public function iso(): ProxmoxVmIsoResource

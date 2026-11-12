@@ -77,6 +77,18 @@ echo $workflow->id;
 ToolsSdk::workflow()->retry(123);
 ```
 
+### Proxmox Firewall
+
+```php
+$firewall = ToolsSdk::proxmox()->vm(123)->firewall();
+
+$rules = $firewall->rules;
+$ipset = $firewall->ipset;
+$options = $firewall->options;
+```
+
+Rules and options are returned as `FirewallRule` and `FirewallOption` objects.
+
 ### Proxmox Kickstart
 
 ```php

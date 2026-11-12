@@ -15,6 +15,7 @@ use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetTimestamp;
 use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmFirewall;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
@@ -115,6 +116,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                             'is_current' => true,
                         ],
                     ]),
+                    GetVmFirewall::class => Mocks::firewall(),
                     
                     // task
                     CreateTask::class => Mocks::noContent(),

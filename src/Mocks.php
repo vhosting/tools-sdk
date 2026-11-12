@@ -146,4 +146,13 @@ class Mocks
             ],
         ]);
     }
+    
+    public static function firewall(): MockResponse
+    {
+        return self::custom([
+            'rules' => [],
+            'ipset' => [],
+            'options' => [],
+        ]);
+    }
 }
