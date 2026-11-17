@@ -31,10 +31,15 @@ class GetVmFirewall extends Request
                 $data = fluent($rule);
 
                 return new FirewallRule(
-                    source: $data->get('source'),
-                    enable: $data->boolean('enable'),
-                    action: $data->string('action'),
+                    enabled: $data->boolean('enabled'),
                     type: $data->string('type'),
+                    action: $data->string('action'),
+                    proto: $data->string('proto'),
+                    source: $data->get('source'),
+                    sport: $data->string('sport'),
+                    dest: $data->string('dest'),
+                    dport: $data->string('dport'),
+                    comment: $data->string('comment'),
                 );
             })->all(),
             ipset: $data->array('ipset'),

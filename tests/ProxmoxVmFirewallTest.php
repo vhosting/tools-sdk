@@ -16,8 +16,28 @@ class ProxmoxVmFirewallTest extends TestCase
     {
         $payload = [
             'rules' => [
-                ['source' => '192.0.2.0/24', 'enable' => true, 'action' => 'ACCEPT', 'type' => 'in'],
-                ['source' => null, 'enable' => false, 'action' => 'DROP', 'type' => 'out'],
+                [
+                    'source' => '192.0.2.0/24',
+                    'enabled' => true,
+                    'action' => 'ACCEPT',
+                    'type' => 'in',
+                    'proto' => 'tcp',
+                    'sport' => '1024:65535',
+                    'dest' => '198.51.100.10',
+                    'dport' => '443',
+                    'comment' => 'Allow HTTPS',
+                ],
+                [
+                    'source' => null,
+                    'enabled' => false,
+                    'action' => 'DROP',
+                    'type' => 'out',
+                    'proto' => '',
+                    'sport' => '',
+                    'dest' => '',
+                    'dport' => '',
+                    'comment' => '',
+                ],
             ],
             'ipset' => ['192.0.2.1', '2001:db8::/64'],
             'options' => [
@@ -33,8 +53,8 @@ class ProxmoxVmFirewallTest extends TestCase
         $this->assertInstanceOf(Firewall::class, $firewall);
         $this->assertInstanceOf(FirewallRule::class, $firewall->rules[0]);
         $this->assertInstanceOf(FirewallOption::class, $firewall->options[0]);
-        $this->assertTrue($firewall->rules[0]->enable);
-        $this->assertFalse($firewall->rules[1]->enable);
+        $this->assertTrue($firewall->rules[0]->enabled);
+        $this->assertFalse($firewall->rules[1]->enabled);
         $this->assertNull($firewall->rules[1]->source);
         $this->assertSame($payload, $firewall->toArray());
         $request = $mock->getLastPendingRequest();
