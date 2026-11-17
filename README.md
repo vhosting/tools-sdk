@@ -89,6 +89,17 @@ $options = $firewall->options;
 
 Rules and options are returned as `FirewallRule` and `FirewallOption` objects.
 
+Retrieve the content of an IP set as an array of `FirewallIpset` objects:
+
+```php
+$entries = ToolsSdk::proxmox()->vm(123)->firewallIpset('allowed');
+
+foreach ($entries as $entry) {
+    echo $entry->cidr;
+    echo $entry->comment;
+}
+```
+
 ### Proxmox Kickstart
 
 ```php

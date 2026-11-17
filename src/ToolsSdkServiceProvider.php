@@ -16,6 +16,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmFirewall;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmFirewallIpset;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
@@ -117,6 +118,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                         ],
                     ]),
                     GetVmFirewall::class => Mocks::firewall(),
+                    GetVmFirewallIpset::class => Mocks::emptyArray(),
                     
                     // task
                     CreateTask::class => Mocks::noContent(),

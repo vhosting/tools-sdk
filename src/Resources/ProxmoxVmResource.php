@@ -6,12 +6,14 @@ use Saloon\Http\Connector;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmFirewall;
+use VHosting\ToolsSdk\Requests\Proxmox\GetVmFirewallIpset;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmIps;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
 use VHosting\ToolsSdk\Types\Proxmox\Firewall;
+use VHosting\ToolsSdk\Types\Proxmox\FirewallIpset;
 use VHosting\ToolsSdk\Types\Proxmox\Rdns;
 use VHosting\ToolsSdk\Types\Proxmox\Stats;
 use VHosting\ToolsSdk\Types\Proxmox\StatsTimeframe;
@@ -71,6 +73,14 @@ class ProxmoxVmResource
     public function firewall(): Firewall
     {
         return $this->connector->send(new GetVmFirewall($this->id))->dto();
+    }
+
+    /**
+     * @return FirewallIpset[]
+     */
+    public function firewallIpset(string $ipset): array
+    {
+        return $this->connector->send(new GetVmFirewallIpset($this->id, $ipset))->dto();
     }
     
     public function iso(): ProxmoxVmIsoResource
