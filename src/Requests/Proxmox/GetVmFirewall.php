@@ -48,6 +48,7 @@ class GetVmFirewall extends Request
 
                 return new FirewallOption(
                     option: $data->string('option'),
+                    label: $data->string('label'),
                     value: $data->string('value'),
                 );
             })->all(),

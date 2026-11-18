@@ -8,6 +8,7 @@ class FirewallOption extends BaseType
 {
     public function __construct(
         public string $option,
+        public string $label,
         public string $value,
     ) {
     }
