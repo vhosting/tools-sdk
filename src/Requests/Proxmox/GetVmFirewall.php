@@ -31,6 +31,7 @@ class GetVmFirewall extends Request
                 $data = fluent($rule);
 
                 return new FirewallRule(
+                    pos: $data->integer('pos'),
                     enabled: $data->boolean('enabled'),
                     type: $data->string('type'),
                     action: $data->string('action'),

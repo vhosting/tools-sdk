@@ -7,6 +7,7 @@ use VHosting\ToolsSdk\Types\BaseType;
 class FirewallRule extends BaseType
 {
     public function __construct(
+        public int $pos,
         public bool $enabled,
         public string $type,
         public string $action,
