@@ -89,6 +89,15 @@ $options = $firewall->options;
 
 Rules and options are returned as `FirewallRule` and `FirewallOption` objects.
 
+Use `firewallRules()` to create a rule or change an existing rule by its current `pos`.
+
+```php
+$rules = ToolsSdk::proxmox()->vm(123)->firewallRules();
+$rules->store(['type' => 'in', 'action' => 'ACCEPT', 'proto' => 'tcp', 'dport' => '443']);
+$rules->update($pos, ['comment' => 'Allow HTTPS']);
+$rules->destroy($pos);
+```
+
 Retrieve the content of an IP set as an array of `FirewallIpset` objects:
 
 ```php

@@ -76,6 +76,11 @@ class ProxmoxVmResource
         return $this->connector->send(new GetVmFirewall($this->id))->dto();
     }
 
+    public function firewallRules(): ProxmoxVmFirewallRulesResource
+    {
+        return new ProxmoxVmFirewallRulesResource($this->connector, $this->id);
+    }
+
     /**
      * @param array<string, mixed> $options
      */

@@ -12,6 +12,9 @@ use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetCounter;
 use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetDkim;
 use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetLimit;
 use VHosting\ToolsSdk\Requests\OqmilterDedicated\GetTimestamp;
+use VHosting\ToolsSdk\Requests\Proxmox\FirewallRules\DeleteFirewallRule;
+use VHosting\ToolsSdk\Requests\Proxmox\FirewallRules\StoreFirewallRule;
+use VHosting\ToolsSdk\Requests\Proxmox\FirewallRules\UpdateFirewallRule;
 use VHosting\ToolsSdk\Requests\Proxmox\GetPlans;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVm;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmBackups;
@@ -121,6 +124,11 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     GetVmFirewall::class => Mocks::firewall(),
                     GetVmFirewallIpset::class => Mocks::emptyArray(),
                     SetVmFirewallOptions::class => Mocks::noContent(),
+                    
+                    // firewall.rules
+                    StoreFirewallRule::class => Mocks::noContent(),
+                    UpdateFirewallRule::class => Mocks::noContent(),
+                    DeleteFirewallRule::class => Mocks::noContent(),
                     
                     // task
                     CreateTask::class => Mocks::noContent(),
