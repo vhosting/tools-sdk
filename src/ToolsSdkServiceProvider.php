@@ -25,6 +25,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\Iso\{CheckIsoMounted, GetIsoList, MountIs
 use VHosting\ToolsSdk\Requests\Proxmox\Kickstart\{DeleteKickstart, GetKickstart, UpsertKickstart};
 use VHosting\ToolsSdk\Requests\Proxmox\Virtio\{CheckVirtioMounted, GetVirtioList, MountVirtio, UnmountVirtio};
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
+use VHosting\ToolsSdk\Requests\Proxmox\SetVmFirewallOptions;
 use VHosting\ToolsSdk\Requests\S3\CreateS3Bucket;
 use VHosting\ToolsSdk\Requests\S3\DeleteS3Bucket;
 use VHosting\ToolsSdk\Requests\S3\GetS3Buckets;
@@ -119,6 +120,7 @@ class ToolsSdkServiceProvider extends ServiceProvider
                     ]),
                     GetVmFirewall::class => Mocks::firewall(),
                     GetVmFirewallIpset::class => Mocks::emptyArray(),
+                    SetVmFirewallOptions::class => Mocks::noContent(),
                     
                     // task
                     CreateTask::class => Mocks::noContent(),

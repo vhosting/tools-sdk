@@ -12,6 +12,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVmRdns;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
+use VHosting\ToolsSdk\Requests\Proxmox\SetVmFirewallOptions;
 use VHosting\ToolsSdk\Types\Proxmox\Firewall;
 use VHosting\ToolsSdk\Types\Proxmox\FirewallIpset;
 use VHosting\ToolsSdk\Types\Proxmox\Rdns;
@@ -73,6 +74,14 @@ class ProxmoxVmResource
     public function firewall(): Firewall
     {
         return $this->connector->send(new GetVmFirewall($this->id))->dto();
+    }
+
+    /**
+     * @param array<string, mixed> $options
+     */
+    public function setFirewallOptions(array $options): void
+    {
+        $this->connector->send(new SetVmFirewallOptions($this->id, $options));
     }
 
     /**
