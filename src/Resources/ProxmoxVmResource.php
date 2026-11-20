@@ -13,6 +13,7 @@ use VHosting\ToolsSdk\Requests\Proxmox\GetVmSnapshots;
 use VHosting\ToolsSdk\Requests\Proxmox\GetVmStats;
 use VHosting\ToolsSdk\Requests\Proxmox\OpenVncProxy;
 use VHosting\ToolsSdk\Requests\Proxmox\SetVmFirewallOptions;
+use VHosting\ToolsSdk\Requests\Proxmox\UpsertVmFirewallIpset;
 use VHosting\ToolsSdk\Types\Proxmox\Firewall;
 use VHosting\ToolsSdk\Types\Proxmox\FirewallIpset;
 use VHosting\ToolsSdk\Types\Proxmox\Rdns;
@@ -95,6 +96,14 @@ class ProxmoxVmResource
     public function firewallIpset(string $ipset): array
     {
         return $this->connector->send(new GetVmFirewallIpset($this->id, $ipset))->dto();
+    }
+
+    /**
+     * @param array{comment?: string|null, rename?: string|null} $options
+     */
+    public function firewallUpsertIpset(string $ipset, array $options = []): void
+    {
+        $this->connector->send(new UpsertVmFirewallIpset($this->id, $ipset, $options));
     }
     
     public function iso(): ProxmoxVmIsoResource

@@ -98,6 +98,14 @@ $rules->update($pos, ['comment' => 'Allow HTTPS']);
 $rules->destroy($pos);
 ```
 
+Create or update an IP set with an optional comment or new name.
+
+```php
+$vm = ToolsSdk::proxmox()->vm(123);
+$vm->firewallUpsertIpset('allowed', ['comment' => 'Office networks']);
+$vm->firewallUpsertIpset('allowed', ['rename' => 'trusted']);
+```
+
 Retrieve the content of an IP set as an array of `FirewallIpset` objects:
 
 ```php

@@ -10,6 +10,22 @@ use VHosting\ToolsSdk\Types\Proxmox\FirewallIpset;
 
 class ProxmoxVmFirewallIpsetTest extends TestCase
 {
+    public function test_firewall_upsert_ipset_sends_optional_fields_to_the_named_set(): void
+    {
+        $mock = new MockClient([MockResponse::make('', 204), MockResponse::make('', 204)]);
+        $vm = (new ToolsConnector('test-token'))->withMockClient($mock)->proxmox()->vm(123);
+
+        $vm->firewallUpsertIpset('allowed');
+        $this->assertSame('{}', (string) $mock->getLastPendingRequest()->body());
+
+        $options = ['comment' => null, 'rename' => 'trusted'];
+        $vm->firewallUpsertIpset('allowed/office', $options);
+        $request = $mock->getLastPendingRequest();
+        $this->assertSame(Method::PUT, $request->getMethod());
+        $this->assertSame('https://tools.vhosting-it.com/api/proxmox/vm/123/firewall/ipset/allowed%2Foffice', $request->getUrl());
+        $this->assertSame($options, $request->body()->all());
+    }
+
     public function test_firewall_ipset_maps_the_documented_response(): void
     {
         $payload = [
